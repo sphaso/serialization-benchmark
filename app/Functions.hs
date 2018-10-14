@@ -1,7 +1,3 @@
-{-# LANGUAGE FlexibleInstances      #-}
-{-# LANGUAGE MultiParamTypeClasses  #-}
-{-# LANGUAGE TypeSynonymInstances   #-}
-
 module Functions where
 
 import qualified Data.ByteString as B
@@ -12,7 +8,6 @@ import qualified Data.Text as T
 import qualified Data.Text.Encoding as T
 import qualified Data.Text.Lazy as LT
 import qualified Data.Text.Lazy.Encoding as LT
-
 
 class ConvertUtf8 b where
     oldEncodeUtf8 :: String -> b
