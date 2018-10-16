@@ -16,18 +16,18 @@ correct = all (\t -> old t == new t) [test1, test2, test3]
 
 strictBenchmarkGroup :: String -> B.ByteString -> [Benchmark]
 strictBenchmarkGroup t bt = [
-                              bench "old encode"  $ whnf (oldEncodeUtf8 :: String -> B.ByteString) t
-                            , bench "old decode"  $ whnf oldDecodeUtf8 bt
-                            , bench "new encode"  $ whnf (newEncodeUtf8 :: String -> B.ByteString) t
-                            , bench "new decode"  $ whnf newDecodeUtf8 bt
+                              bench "old encode"  $ nf (oldEncodeUtf8 :: String -> B.ByteString) t
+                            , bench "old decode"  $ nf oldDecodeUtf8 bt
+                            , bench "new encode"  $ nf (newEncodeUtf8 :: String -> B.ByteString) t
+                            , bench "new decode"  $ nf newDecodeUtf8 bt
                             ]
 
 lazyBenchmarkGroup :: String -> LB.ByteString -> [Benchmark]
 lazyBenchmarkGroup t bt = [
-                            bench "old encode"  $ whnf (oldEncodeUtf8 :: String -> LB.ByteString) t
-                          , bench "old decode"  $ whnf oldDecodeUtf8 bt
-                          , bench "new encode"  $ whnf (newEncodeUtf8 :: String -> LB.ByteString) t
-                          , bench "new decode"  $ whnf newDecodeUtf8 bt
+                            bench "old encode"  $ nf (oldEncodeUtf8 :: String -> LB.ByteString) t
+                          , bench "old decode"  $ nf oldDecodeUtf8 bt
+                          , bench "new encode"  $ nf (newEncodeUtf8 :: String -> LB.ByteString) t
+                          , bench "new decode"  $ nf newDecodeUtf8 bt
                           ]
 
 makeGroup :: String -> (String -> b -> [Benchmark]) -> [b] -> Benchmark
